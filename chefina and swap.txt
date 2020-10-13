@@ -1,0 +1,41 @@
+def function(n,lst1 , lst2):
+    i = 0
+    j = 1
+    minu = 0
+    checker = 0
+    lst = []
+    while(i < n):
+        if(i < len(lst2)-1 and lst2[i] == lst2[i+1]):
+            lst.append(lst2[i])
+        if(i < n-1 and lst1[i] == lst1[i+1]):
+            lst.append(lst1[i])
+            i += 2
+            checker += 1
+        else:
+            try:
+                lst2.remove(lst1[i])
+                i += 1
+            except:
+                j = 0
+                break;
+
+    lst.sort()
+    for i in range(checker):
+        minu += lst[i]
+    if(j == 0):
+        print(-1)
+    else:
+        print(minu)
+
+
+
+
+t = int(input())
+while(t>0):
+    n = int(input())
+    lst1 = list(map(int, input().split()))
+    lst2 = list(map(int, input().split()))
+    lst1.sort()
+    lst2.sort()
+    function(n,lst1 , lst2)
+    t -= 1
